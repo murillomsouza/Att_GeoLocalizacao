@@ -1,4 +1,4 @@
-package com.attgeolocalizao; // ajuste para o seu pacote
+package com.attgeolocalizao;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -66,10 +66,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Configuração do osmdroid (deve vir antes de criar o mapa)
         Configuration.getInstance().load(this,
                 getSharedPreferences("osmdroid", Context.MODE_PRIVATE));
-        // User-Agent identifica o app para o servidor de tiles do OSM
         Configuration.getInstance().setUserAgentValue(getPackageName());
 
         setContentView(R.layout.activity_main);
@@ -120,8 +118,8 @@ public class MainActivity extends AppCompatActivity
 
     private void configurarMapa() {
         mapa = findViewById(R.id.map);
-        mapa.setTileSource(TileSourceFactory.MAPNIK); // mapa padrão do OSM
-        mapa.setMultiTouchControls(true);             // zoom com dois dedos
+        mapa.setTileSource(TileSourceFactory.MAPNIK);
+        mapa.setMultiTouchControls(true);
 
         // Créditos do OpenStreetMap (exigidos pela licença)
         mapa.getOverlays().add(new CopyrightOverlay(this));
@@ -143,11 +141,9 @@ public class MainActivity extends AppCompatActivity
         marcador.setPosition(posicao);
 
         if (primeiraLeitura) {
-            // Primeira posição: aproxima o mapa
             mapa.getController().setZoom(17.0);
             primeiraLeitura = false;
         }
-        // Acompanha a posição sem mexer no zoom do usuário
         mapa.getController().animateTo(posicao);
         mapa.invalidate();
     }
@@ -175,9 +171,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     // ---- Localização nativa (LocationManager) ----
-
-    // Inicia as atualizações usando GPS e rede
-    // (a rede ajuda em ambientes fechados)
     @SuppressLint("MissingPermission")
     private void iniciarAtualizacoes() {
         boolean algumAtivo = false;
@@ -201,7 +194,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         atualizando = true;
-        primeiraLeitura = true; // volta a aproximar o mapa na 1ª posição
+        primeiraLeitura = true;
         btnLocalizacao.setText("Parar localização");
         txtStatus.setText("Buscando sinal...");
         progresso.setVisibility(android.view.View.VISIBLE);
@@ -262,7 +255,6 @@ public class MainActivity extends AppCompatActivity
         mapa.onResume();
     }
 
-    // Boa prática: parar as atualizações quando o app sai de cena
     @Override
     protected void onPause() {
         super.onPause();
