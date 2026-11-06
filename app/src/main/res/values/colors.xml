@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="topo">#0B132B</color>
+    <color name="base">#1C2541</color>
+    <color name="painel">#111A33</color>
+    <color name="tile">#1B2547</color>
+    <color name="borda">#2A3560</color>
+    <color name="acento">#B388FF</color>
+    <color name="texto">#FFFFFF</color>
+    <color name="texto_sec">#9AA7C7</color>
+</resources>
