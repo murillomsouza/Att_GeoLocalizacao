@@ -39,4 +39,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
+    implementation("org.osmdroid:osmdroid-android:6.1.20")
 }

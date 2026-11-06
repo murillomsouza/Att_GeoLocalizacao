@@ -6,67 +6,51 @@
     android:background="@drawable/bg_gradiente"
     android:orientation="vertical">
 
-    <!-- Parte de cima: título, ícone e status -->
-    <LinearLayout
+    <!-- Parte de cima: mapa com status sobreposto -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingTop="24dp">
+        android:layout_weight="1">
 
-        <TextView
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:letterSpacing="0.3"
-            android:text="GPS TRACKER"
-            android:textColor="@color/acento"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="LocationManager • API nativa"
-            android:textColor="@color/texto_sec"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_mapa"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="8dp"
+                android:text="Aguardando"
+                android:textColor="@color/acento"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bg_circulo"
-            android:gravity="center"
-            android:text="📍"
-            android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/bg_chip"
-            android:paddingStart="20dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="8dp"
-            android:text="Aguardando"
-            android:textColor="@color/acento"
-            android:textSize="13sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progresso"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            app:indicatorColor="@color/acento"
-            app:trackColor="@color/borda"
-            app:trackCornerRadius="4dp" />
-    </LinearLayout>
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progresso"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:indicatorColor="@color/acento"
+                app:trackColor="@color/borda"
+                app:trackCornerRadius="4dp" />
+        </LinearLayout>
+    </FrameLayout>
 
     <!-- Painel inferior com os dados -->
     <LinearLayout
