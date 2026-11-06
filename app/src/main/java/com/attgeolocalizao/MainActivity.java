@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity
     private boolean atualizando = false;
     private Location ultimaLocalizacao;
 
-    // Mapa (OpenStreetMap / osmdroid)
     private MapView mapa;
     private Marker marcador;
     private boolean primeiraLeitura = true;
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         configurarMapa();
 
-        // Serviço nativo de localização do Android
+        // Serviço nativo
         locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
 
@@ -121,10 +120,10 @@ public class MainActivity extends AppCompatActivity
         mapa.setTileSource(TileSourceFactory.MAPNIK);
         mapa.setMultiTouchControls(true);
 
-        // Créditos do OpenStreetMap (exigidos pela licença)
+        // Créditos do OpenStreetMap
         mapa.getOverlays().add(new CopyrightOverlay(this));
 
-        // Visão inicial: Brasil, até a primeira localização chegar
+        // Visão inicial: Brasil
         mapa.getController().setZoom(4.0);
         mapa.getController().setCenter(new GeoPoint(-14.2350, -51.9253));
     }
@@ -170,7 +169,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    // ---- Localização nativa (LocationManager) ----
+    // ---- LocationManager ----
     @SuppressLint("MissingPermission")
     private void iniciarAtualizacoes() {
         boolean algumAtivo = false;
